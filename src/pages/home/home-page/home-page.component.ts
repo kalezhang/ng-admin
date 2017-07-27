@@ -37,10 +37,10 @@ deleteLast(){
   this.users.pop()
 }
 saveNewUser(){
-  this.users.push({"index":19,
-    "prodtype":"家电2",
+  this.users.push({"index":Math.round(Math.random() * 100),
+    "prodtype":"新家电",
       "prodname":"电吹风",
-      "price":"189",
+      "price":Math.round(Math.random() * 100),
       "brand":"飞利浦",
       "zhishu":"5",
       "pinglun":100,
