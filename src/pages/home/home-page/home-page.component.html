@@ -7,25 +7,25 @@
   <tbody>
     <tr>
       <th>ID </th>
-      <th>姓名 </th>
-      <th>性别 </th>
-      <th>Name </th>
-      <th>github </th>
-      <th>exam1 </th>
-      <th>exam2 </th>
-      <th>exam3 </th>
+      <th style="width:100px;">商品种类 </th>
+      <th>商品名称 </th>
+      <th>单价 </th>
+      <th>品牌 </th>
+      <th>推荐购买指数 </th>
+      <th>评论数 </th>
+      <th>月销售量 </th>
     </tr>
   </tbody>
   <tbody>
     <tr *ngFor="let user of users">
       <td>{{user.index}}</td>
-      <td>{{user.name}}</td>
-      <td>{{user.sex}}</td>
-      <td>{{user.name_en}} </td>
-      <td><a target="_blank" href="http://github.com/{{user.github}}">{{user.github}}</a></td>
-      <td>{{user.exam1}}</td>
-      <td>{{user.exam2}}</td>
-      <td>{{user.exam3}}</td>
+      <td>{{user.prodtype}}</td>
+      <td>{{user.prodname}}</td>
+      <td>{{user.price}} </td>
+      <td><a target="_blank" href="http://github.com/{{user.github}}">{{user.brand}}</a></td>
+      <td>{{user.zhishu}}</td>
+      <td>{{user.pinglun}}</td>
+      <td>{{user.monthcnt}}</td>
     </tr>
   </tbody>
 </table>
