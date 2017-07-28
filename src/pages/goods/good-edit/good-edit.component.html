@@ -1,0 +1,48 @@
+<p>
+  <button (click)="back()">返回</button>
+</p>
+
+<div>
+ID	
+<input type="text" [(ngModel)]="good.index"/>
+</div>
+
+
+<div>
+商品种类:
+<select [(ngModel)]="good.prodtype">
+  <option value="家电">家电</option>
+  <option value="零食">零食</option>
+  <option value="日用品">日用品</option>
+</select>
+</div>
+
+<div>
+商品名称	
+<input type="text" [(ngModel)]="good.prodname"/>
+</div>
+
+
+<div>
+单价：
+<input type="text" [(ngModel)]="good.price"/>
+</div>
+
+<div>
+品牌：
+<input type="text" [(ngModel)]="good.brand"/>
+</div>
+
+<div>
+推荐购买指数：
+<input type="text" [(ngModel)]="good.zhishu"/>
+</div>
+
+<div>
+月销售量：
+<input type="text" [(ngModel)]="good.monthcnt"/>
+</div>
+
+
+<br>
+<button (click)="save()">提交</button>
