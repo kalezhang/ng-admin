@@ -1,5 +1,3 @@
-
-
 <table class="tSearch">
   <tr>
     <td>
@@ -9,14 +7,13 @@
       </select></td>
     <td><input style="float:left;" [(ngModel)]="searchText" /></td>
     <td><button style="float:left;" (click)="goodServ.search(searchType,searchText)">搜索</button></td>
+    <td><button (click)="sortByAsccending()">正序</button>
+      <button (click)="sortByDesccending()">倒序</button>
+      <button (click)="sortByRadom()">随机</button>
+      <button routerLink="/goods/edit/new">新增</button>
+    </td>
   </tr>
 </table>
-<br>
-<button (click)="sortByAsccending()">正序排列</button>
-<button (click)="sortByDesccending()">倒序排列</button>
-<button (click)="sortByRadom()">随机打乱</button>
-<button routerLink="/goods/edit/new">新增</button>
-<br>
 <table class="tGrid">
   <tbody>
     <tr style="background-color:blue;">
@@ -25,7 +22,7 @@
       <th>商品名称 </th>
       <th>单价 </th>
       <th>品牌 </th>
-      <th>推荐购买指数 </th>
+      <!--<th>推荐购买指数 </th>-->
       <th>评论数 </th>
       <th>月销售量 </th>
       <th></th>
@@ -38,7 +35,7 @@
       <td>{{good.prodname}}</td>
       <td>{{good.price}} </td>
       <td><a target="_blank" href="http://github.com/{{good.github}}">{{good.brand}}</a></td>
-      <td>{{good.zhishu}}</td>
+      <!--<td>{{good.zhishu}}</td>-->
       <td>{{good.pinglun}}</td>
       <td>{{good.monthcnt}}</td>
       <td><button routerLink="/goods/edit/{{good.objectId}}">编辑</button> <button (click)="goodServ.delete(good)">删除</button></td>
