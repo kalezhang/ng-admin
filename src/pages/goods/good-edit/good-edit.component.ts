@@ -38,29 +38,43 @@ getGoodSubscribe:any;
   private location: Location) {
     
   }
-
   
   back(){
     this.location.back();
   }
   save(){
-    this.goodServ.goods.push(this.good)
-    this.location.back();
+    // this.goodServ.goods.push(this.good)
+    // this.location.back();
+    
+    this.good.index = Number(this.good.index)
+    this.good.zhishu = Number(this.good.zhishu)
+    this.good.pinglun = Number(this.good.pinglun)
+    this.good.monthcnt = Number(this.good.monthcnt)
+    this.goodServ.saveGood(this.good).subscribe(data=>{
+      console.log(data)
+      this.location.back();
+    })
   }
 
   ngOnInit() {
-    this.getGoodSubscribe = this.route.params.subscribe(params=>{
-      this.getGood(params['gid']).then(good=>{
-      console.log(good)
-      this.goodId = good.index;
-      this.good = good;
-    }).catch(err=>{
-      console.log(err)
-    })
+        this.route.params.subscribe(params=>{
+          let id = params['gid']
+          if(id=="new"){
+            let good = {name:""}
+            this.isNew = true;
+            this.good = good
+          }else{
+            this.goodServ.getGoodById(id).subscribe(good=>{
+            console.log(good)
+            // this.goodId = good.objectId;
+            this.good = good
+        })
+      }
+
     })
   }
   ngOnDestroy(){
-    this.getGoodSubscribe.unsubscribe();
+    // this.getGoodSubscribe.unsubscribe();
   }
  getGood(id: any): Promise<any> {
     

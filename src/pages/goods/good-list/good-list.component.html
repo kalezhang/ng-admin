@@ -1,9 +1,23 @@
+
+
+<table class="tSearch">
+  <tr>
+    <td>
+      <select [(ngModel)]="searchType" style="float:left;">
+        <option value="name">ID</option>
+        <option value="商品名称">商品名称</option>
+      </select></td>
+    <td><input style="float:left;" [(ngModel)]="searchText" /></td>
+    <td><button style="float:left;" (click)="goodServ.search(searchType,searchText)">搜索</button></td>
+  </tr>
+</table>
+<br>
 <button (click)="sortByAsccending()">正序排列</button>
 <button (click)="sortByDesccending()">倒序排列</button>
 <button (click)="sortByRadom()">随机打乱</button>
 <button routerLink="/goods/edit/new">新增</button>
 <br>
-<table>
+<table class="tGrid">
   <tbody>
     <tr style="background-color:blue;">
       <th>ID </th>
@@ -27,7 +41,7 @@
       <td>{{good.zhishu}}</td>
       <td>{{good.pinglun}}</td>
       <td>{{good.monthcnt}}</td>
-      <td><button routerLink="/goods/edit/{{good.index}}">编辑</button> <button (click)="delete(good)">删除</button></td>
+      <td><button routerLink="/goods/edit/{{good.objectId}}">编辑</button> <button (click)="goodServ.delete(good)">删除</button></td>
     </tr>
   </tbody>
 </table>

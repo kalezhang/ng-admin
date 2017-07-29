@@ -9,29 +9,38 @@ import {
 import { Input } from '@angular/core';
 import { Output,EventEmitter } from '@angular/core';
 import {GoodsService} from "../goods.service";
+
+import { Http } from '@angular/http'
+
+import {Parse} from "../../../cloud/parse"
+
 @Component({
   selector: 'app-good-list',
   templateUrl: './good-list.component.html',
   styleUrls: ['./good-list.component.scss']
 })
 export class GoodListComponent implements OnInit {
+  searchText: string = "";
+  searchType: string = "name";
+  selectGood:Array<any>;
+
 @Input() good:any
+
+  @Output() goodClick = new EventEmitter<any>();
+
   goods:Array<any>=[];
   deleteLast() {
     this.goods.pop()
   }
-  // saveNewGood() {
-  //   this.goods.push({
-  //     "index": Math.round(Math.random() * 100),
-  //     "prodtype": "新家电",
-  //     "prodname": "电吹风",
-  //     "price": Math.round(Math.random() * 100),
-  //     "brand": "飞利浦",
-  //     "zhishu": "5",
-  //     "pinglun": 100,
-  //     "monthcnt": 99
-  //   })
-  // }
+
+getUserClick(ev){
+    this.selectGood = ev
+    console.log(ev);
+  }
+  
+  onGoodClick(){
+    this.goodClick.emit(this.good)
+  }
   
   delete(good){
     let goodIndex = good.index;
@@ -83,9 +92,13 @@ export class GoodListComponent implements OnInit {
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
   }
 
-  constructor(meta: Meta, title: Title, private goodServ:GoodsService) {
+  constructor(meta: Meta, title: Title, private http:Http, private goodServ:GoodsService) {
 
-    this.goods = this.goodServ.getGoods();
+    let query = new Parse.Query("Good",http)
+    query.find().subscribe(data=>{
+      console.log(data)
+      this.goods = data
+    })
 
     title.setTitle('My Home Page');
 

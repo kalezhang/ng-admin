@@ -23,10 +23,10 @@ const SPAroutes: Routes = [
     path: '',
     children: []
   },
+  { path: 'goods/list', component: GoodListComponent },
   { path: 'home', component: HomePageComponent },
   { path: 'about', component: AboutPageComponent },
   { path: 'login', component: LoginPageComponent },
-  { path: 'goods/list', component: GoodListComponent },
   { path: 'goods/edit', component: GoodEditComponent },
 ];
 
